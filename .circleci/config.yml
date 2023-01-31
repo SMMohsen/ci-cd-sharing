@@ -16,9 +16,9 @@ jobs:
       - checkout
       - run:
           name: "Save file"
-          command: "echo Hello, World! > greeting.txt"
+          command: "echo Hello, World! > /tmp/workspace/greeting.txt"
       - persist_to_workspace:
-          root: /tmp/
+          root: /tmp/workspace
           paths:
             - greeting.txt
   print-greeting-file:
@@ -30,7 +30,7 @@ jobs:
           name: "Print greeting"
           command: "cat greeting.txt"
       - attach_workspace:
-          at: /tmp/
+          at: /tmp/workspace
 
     
 
