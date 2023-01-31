@@ -10,8 +10,6 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
       - image: busybox
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
       - run:
@@ -20,7 +18,7 @@ jobs:
       - persist_to_workspace:
           root: /tmp
           paths:
-            - greeting.txt
+            - /greeting.txt
   print-greeting-file:
     docker:
       - image: busybox
@@ -40,4 +38,6 @@ workflows:
   sharing-workflow:
     jobs:
       - save-greeting-file
-      - print-greeting-file
+      - print-greeting-file:
+          requires:
+            - save-greeting-file
