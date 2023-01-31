@@ -18,17 +18,17 @@ jobs:
       - persist_to_workspace:
           root: /tmp
           paths:
-            - /greeting.txt
+            - greeting.txt
   print-greeting-file:
     docker:
       - image: busybox
     steps:
-      - checkout
+      - attach_workspace:
+          at: /tmp
       - run:
           name: "Print greeting"
           command: "cat /tmp/greeting.txt"
-      - attach_workspace:
-          at: /tmp
+      
 
     
 
