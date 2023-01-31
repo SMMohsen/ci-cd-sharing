@@ -40,6 +40,4 @@ workflows:
   sharing-workflow:
     jobs:
       - save-greeting-file
-      - print-greeting-file:
-          requires:
-            - save-greeting-file
+      - print-greeting-file
