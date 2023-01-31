@@ -28,7 +28,7 @@ jobs:
       - checkout
       - run:
           name: "Print greeting"
-          command: "cat greeting.txt"
+          command: "cat /tmp/greeting.txt"
       - attach_workspace:
           at: /tmp
 
